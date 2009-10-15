@@ -7,7 +7,7 @@ commonly used Python built-ins. It aims to make the component
 architecture useable with the most basic objects and to defines the
 types in order to extend them conveniently.
 
-  >>> from zope.interface import providedBy, verify
+  >>> from zope.interface import verify
   >>> from dolmen.builtins import interfaces as base
 
   >>> macduff = "Tis' a very nice string."
