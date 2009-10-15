@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from zope.interface import Interface, classImplements, Attribute
+from zope.interface import Interface, classImplements
 
     
 class IString(Interface):
