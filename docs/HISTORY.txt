@@ -1,0 +1,7 @@
+=======
+Changes
+=======
+
+0.1 (2009-10-15)
+
+    * Initial release [trollfot]
