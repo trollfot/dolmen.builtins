@@ -34,6 +34,10 @@ types in order to extend them conveniently.
   >>> base.INumeric.providedBy(opposants)
   True
 
+
+More complex types have more information defined in their interfaces.
+It's the case for iterables and file-like classes.
+
   >>> murderers = ('MacBeth', 'Lady MacBeth')
   >>> base.ITuple.providedBy(murderers)
   True
@@ -56,3 +60,7 @@ types in order to extend them conveniently.
   >>> verify.verifyObject(base.IDict, thanes)
   True
   
+  >>> base.IFile.implementedBy(file)
+  True
+  >>> verify.verifyClass(base.IFile, file)
+  True

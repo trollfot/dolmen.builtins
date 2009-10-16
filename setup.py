@@ -2,9 +2,19 @@ from setuptools import setup, find_packages
 from os.path import join
 
 name = 'dolmen.builtins'
-version = '0.2dev'
+version = '0.2'
 readme = open(join('src', 'dolmen', 'builtins', "README.txt")).read()
 history = open(join('docs', 'HISTORY.txt')).read()
+
+install_requires = [
+    'setuptools',
+    'zope.interface'
+    ]
+
+tests_require = install_requires + [
+    'zope.testing',
+    'zope.app.testing',
+    ]
 
 setup(name = name,
       version = version,
@@ -22,10 +32,10 @@ setup(name = name,
       include_package_data = True,
       platforms = 'Any',
       zip_safe = True,
-      install_requires=[
-          'setuptools',
-          'zope.interface'
-      ],
+      tests_require = tests_require,
+      install_requires = install_requires,
+      extras_require = {'test': tests_require},
+      test_suite="dolmen.builtins",
       classifiers = [
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
