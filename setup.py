@@ -28,7 +28,6 @@ setup(name = name,
       platforms = 'Any',
       zip_safe = True,
       install_requires = install_requires,
-      test_suite="dolmen.builtins",
       classifiers = [
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
