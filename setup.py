@@ -8,10 +8,8 @@ history = open(join('docs', 'HISTORY.txt')).read()
 
 install_requires = [
     'setuptools',
-    'zope.interface'
+    'zope.interface',
     ]
-
-tests_require = []
 
 setup(name = name,
       version = version,
@@ -29,9 +27,7 @@ setup(name = name,
       include_package_data = True,
       platforms = 'Any',
       zip_safe = True,
-      tests_require = tests_require,
       install_requires = install_requires,
-      extras_require = {'test': tests_require},
       test_suite="dolmen.builtins",
       classifiers = [
         'Development Status :: 4 - Beta',
