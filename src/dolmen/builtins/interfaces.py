@@ -2,7 +2,7 @@
 
 from zope.interface import Interface, classImplements
 
-    
+
 class IString(Interface):
     """Marker interface for mutable strings.
     """
@@ -32,6 +32,7 @@ classImplements(bool, IBoolean)
 class IIterable(Interface):
     """Base interface for iterable types.
     """
+
     def __iter__():
         """Return an iterator object.
         """
@@ -52,11 +53,12 @@ classImplements(tuple, ITuple)
 class IDict(IIterable):
     """Marker interface for dicts
     """
+
     def items():
         """Returns an iterable list of couples key - value,
         as a list of tuples.
         """
-    
+
     def values():
         """Returns an iterable list of the dict values.
         """
@@ -75,6 +77,7 @@ classImplements(dict, IDict)
 class IFile(Interface):
     """Defines an python file builtin.
     """
+
     def seek(offset, whence=0):
         """Set the file's current position.
         """
@@ -109,6 +112,6 @@ class IFile(Interface):
         """
 classImplements(file, IFile)
 
-    
+
 __all__ = ("IString", "IUnicode", "IBoolean", "INumeric",
            "IIterable", "IList", "ITuple", "IDict", "IFile")
