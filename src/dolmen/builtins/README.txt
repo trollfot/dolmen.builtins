@@ -10,7 +10,7 @@ types in order to extend them conveniently.
   >>> from zope.interface import verify
   >>> from dolmen.builtins import interfaces as base
 
-  >>> macduff = "Tis' a very nice string."
+  >>> macduff = b"Tis' a very nice string."
   >>> base.IString.providedBy(macduff)
   True
 
@@ -29,11 +29,6 @@ types in order to extend them conveniently.
   >>> king = 0.1
   >>> base.INumeric.providedBy(king)
   True
-
-  >>> opposants = 1L
-  >>> base.INumeric.providedBy(opposants)
-  True
-
 
 More complex types have more information defined in their interfaces.
 It's the case for iterables and file-like classes.
@@ -59,8 +54,9 @@ It's the case for iterables and file-like classes.
 
   >>> verify.verifyObject(base.IDict, thanes)
   True
-  
-  >>> base.IFile.implementedBy(file)
+
+  >>> fd = open('something.txt', 'w')
+  >>> base.IFile.providedBy(fd)
   True
-  >>> verify.verifyClass(base.IFile, file)
+  >>> verify.verifyObject(base.IFile, fd)
   True

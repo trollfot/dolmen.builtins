@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
 
+import sys
 from zope.interface import Interface, classImplements
 
 
 class IString(Interface):
     """Marker interface for mutable strings.
     """
-classImplements(str, IString)
+classImplements(bytes, IString)
 
 
 class IUnicode(Interface):
     """Marker interface for mutable unicode strings.
     """
+
+if sys.version_info[0] >= 3:
+    unicode = str
 classImplements(unicode, IUnicode)
 
 
@@ -19,8 +23,10 @@ class INumeric(Interface):
     """Marker interface for a numeric value.
     """
 classImplements(int, INumeric)
-classImplements(long, INumeric)
 classImplements(float, INumeric)
+
+if sys.version_info[0] < 3:
+    classImplements(long, INumeric)
 
 
 class IBoolean(Interface):
@@ -67,7 +73,7 @@ class IDict(IIterable):
         """Returns an iterable list of the dict keys.
         """
 
-    def has_key(key):
+    def __contains__(key):
         """Returns a boolean, True if the key exists in the dict,
         False otherwise.
         """
@@ -110,7 +116,15 @@ class IFile(Interface):
     def truncate(size=None):
         """Truncate the file's size.
         """
-classImplements(file, IFile)
+
+if sys.version_info[0] >= 3:
+    from io import FileIO, StringIO, TextIOWrapper, BytesIO
+    classImplements(FileIO, IFile)
+    classImplements(StringIO, IFile)
+    classImplements(TextIOWrapper, IFile)
+    classImplements(BytesIO, IFile)
+else:
+    classImplements(file, IFile)
 
 
 __all__ = ("IString", "IUnicode", "IBoolean", "INumeric",
